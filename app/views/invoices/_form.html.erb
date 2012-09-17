@@ -1,0 +1,55 @@
+<%= simple_nested_form_for @invoice, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Invoice</legend>
+
+    <%= f.error_notification %>
+    <%= f.association :client, :collection=>current_user.clients %>
+    <%= f.input :date,:as => :string %>
+    <%= f.input :number, :input_html => { :value => format_invoice_number(@invoice.number)}, :as => :string %>
+    <%= f.association :currency_type, :label_method=> :label_name %>
+    <%= f.input :note ,:input_html => { :rows => 3, :class=>"span5" }%>
+
+    <fieldset id="invoice-items">
+      <legend>Invoice Items</legend>
+        <div class="row item-header">
+          <div class="span4" style="margin-left:0px" ><span style="padding-left:10px"><strong>Quantity</strong></span></div>
+          <div class="span5"><strong>Description</strong></div>
+          <div class="span1"><strong>Price</strong></div>
+          <div class="span1" style="text-align:right"><strong>Total</strong></div>
+        </div>
+        <%= f.simple_fields_for :invoice_items do |item_form| %>
+          <div class="row" >
+            <div class="span4">
+              <div class="control-group<% if item_form.object.errors.has_key?(:quantity) %> error<% end %>">
+                <%= item_form.input_field :quantity, :class=>"span1" %>
+                <%= item_form.error :quantity %>
+                <%= item_form.input_field :quantity_type_id, :collection=>quantity_type_options, :class=>"span2" %>
+              </div>
+            </div>
+            <div class="span5">
+              <div class="control-group<% if item_form.object.errors.has_key?(:description) %> error<% end %>">
+                <%= item_form.input_field :description, :class=>"span4", :rows=>4 %>
+                <%= item_form.error :description %>
+              </div>
+            </div>
+            <div class="span1 control-group required">
+              <div class="control-group<% if item_form.object.errors.has_key?(:price) %> error<% end %>">
+                <%= item_form.input_field :price, :class=>"span1" %>
+                <%= item_form.error :price %>
+              </div>
+            </div>
+            <div class="span1" style="text-align:right">0.00</div>
+            <div class="span1"><%= item_form.link_to_remove  'remove', :class=>'btn  btn-mini pull-right' %></div>
+          </div>
+        <% end %>
+          <%= f.link_to_add "Add another invoice item", :invoice_items, :class=>'btn  btn-mini pull-left remove-link' %>
+          <div class="span1 pull-right">&nbsp;</div>
+          <div id="total" class="span2 pull-right">$0.00</div>
+    </fieldset>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', invoices_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

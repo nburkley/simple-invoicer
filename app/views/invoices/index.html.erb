@@ -1,0 +1,32 @@
+<h1>Invoices</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Date</th>
+      <th>Client</th>
+      <th>Total</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @invoices.each do |invoice| %>
+    <tr>
+      <td><%= link_to format_invoice_number(invoice.number), invoice %></td>
+      <td><%= format_date(invoice.date) %></td>
+      <td><%= invoice.client.name %></td>
+      <td ><%= format_price(invoice.total, invoice.currency_type) %></td>
+      <td><%= link_to 'Edit', edit_invoice_path(invoice), :class => 'btn btn-mini' %></td>
+      <td><%= link_to 'Delete', invoice_path(invoice), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Invoice', new_invoice_path, :class => 'btn btn-primary' %>
+

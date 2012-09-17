@@ -1,0 +1,120 @@
+$light-grey: #F1F1F1;
+$dark-grey: #999;
+$standard-border: 1px solid #C7C7C7;
+
+div#invoice-edit, div#invoice-new {
+
+    fieldset#invoice-items {
+        border-top: $standard-border;
+        border-bottom: $standard-border;
+        margin-bottom:10px;
+        padding-bottom: 10px;
+    }
+
+    fieldset#invoice-items legend{
+      text-align:left;
+      color: $dark-grey;
+      font-size:18px;
+      padding:0px 4px 0px 4px;
+      margin-left:20px;
+      margin-bottom:0;
+      border:none;
+      width:110px;
+    }
+
+    div.fields {
+        padding-bottom:10px;
+    }
+
+    a.remove-link {
+        margin-left:53%;
+    }
+
+    div#total {
+        font-weight:bold;
+        text-align:right;
+    }
+
+    div.item-header {
+        min-height: 20px;
+        padding: 5px 0 5px 0;
+        margin-left:0px;
+        margin-bottom: 10px;
+        background-color: #737373;
+        background-image: -moz-linear-gradient(top, $light-grey, $dark-grey);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from($light-grey), to($dark-grey));
+        background-image: -webkit-linear-gradient(top, $light-grey, $dark-grey);
+        background-image: -o-linear-gradient(top, $light-grey, $dark-grey);
+        background-image: linear-gradient(to bottom, $light-grey, $dark-grey);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF888888', endColorstr='#FF555555', GradientType=0);
+        border: $standard-border;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+        -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+    }
+
+}
+
+
+div#invoice-show {
+
+    @media print {
+        zoom:0.7;
+        font-size:15px;
+    }
+
+    #invoice-details, #invoice-total {
+        .description {
+           padding-left:20px;
+        }
+
+        .total {
+            padding-right:10px;
+        }
+    }
+
+    #invoice-details, #invoice-note, #address-info {
+        margin-top:25px;
+    }
+
+    div.item-header {
+
+        min-height: 20px;
+        padding: 5px 10px 5px 0px;
+        background-color: #737373;
+        background-image: -moz-linear-gradient(top, $light-grey, $dark-grey);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from($light-grey), to($dark-grey));
+        background-image: -webkit-linear-gradient(top, $light-grey, $dark-grey);
+        background-image: -o-linear-gradient(top, $light-grey, $dark-grey);
+        background-image: linear-gradient(to bottom, $light-grey, $dark-grey);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF888888', endColorstr='#FF555555', GradientType=0);
+        border: $standard-border;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+        -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+
+    }
+
+    div.invoice-item {
+        border-bottom: $standard-border;
+        padding: 12px 0 5px 0;
+        float:left;
+
+    }
+
+    div#invoice-note {
+        background-color: #FAFAFA;
+        border-bottom: $standard-border;
+        border-top: $standard-border;
+        padding: 20px;
+    }
+
+}

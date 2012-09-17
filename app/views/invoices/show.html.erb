@@ -1,0 +1,97 @@
+<%= content_for :navbar_actions do%>
+<li class="dropdown">
+  <a id="invoice-actions" class="dropdown-toggle navbar-link" data-toggle="dropdown"  href="#">
+    <strong>Invoice Actions</strong><b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="invoice-actions">
+    <li><%= link_to "Edit", edit_invoice_path(@invoice) %></li>
+    <li><%= link_to "View as PDF", invoice_path(@invoice, :format=>:pdf) %></li>
+    <li class="divider"></li>
+    <li><%= link_to 'Delete Invoice', invoice_path(@invoice), :method => :delete, :confirm => 'Are you sure?' %></li>
+  </ul>
+</li>
+<% end %>
+
+
+<div id="invoice-show">
+
+  <div class="row">
+    <div class="span4"><h1><%= current_user.profile.company_name %></h1></div>
+    <div class="span2 offset4 right-align" ><h3>Invoice</h3></div>
+    <div class="span2"><h3><%= format_invoice_number(@invoice.number) %></h3></div>
+  </div>
+  <div class="row">
+    <div class="span2 offset8 right-align"><strong>Date of Invoice</strong></div>
+    <div class="span2"><%= format_date(@invoice.date) %></div>
+  </div>
+  <div class="row">
+    <div class="span2 offset8 right-align"><strong>Payment is Due</strong></div>
+    <div class="span2"><%= format_date(@invoice.due_date) %></div>
+  </div>
+
+
+  <div id="address-info" class="row no-margin-left" >
+      <div class="span4">
+        <p><h4>To</h4></p>
+        <p><strong><%=@invoice.client.name %></strong></p>
+        <p><%= @invoice.client.address.line_one %></p>
+        <p><%= @invoice.client.address.line_two %></p>
+        <p><%= @invoice.client.address.city %></p>
+        <p><%= @invoice.client.address.state %> <%= @invoice.client.address.zipcode %></p>
+        <p><%= @invoice.client.address.country %></p>
+      </div>
+      <div class="span4">
+        <p><h4>From</h4></p>
+        <p><strong><%= current_user.profile.company_name %></strong></p>
+        <p><%= current_user.profile.address.line_one %></p>
+        <p><%= current_user.profile.address.line_two %></p>
+        <p><%= current_user.profile.address.city %></p>
+        <p><%= current_user.profile.address.state %> <%= current_user.profile.address.zipcode %></p>
+        <p><%= current_user.profile.address.country %></p>
+      </div>
+
+  </div>
+
+  <div id="invoice-details">
+    <div class="item-header">
+      <div class="span6 no-margin-left"><span class="description"><strong>Description</strong></span></div>
+      <div class="span2 offset1"><strong>Quantity</strong></div>
+      <div class="span1"><strong>Price</strong></div>
+      <div class="span1 pull-right right-align"><span class="total"><strong>Total</strong></span></div>
+    </div>
+
+      <% @invoice.invoice_items.each do |invoice_item| %>
+      <div class="invoice-item">
+        <div class="span6 no-margin-left">
+          <div class="description"><%= simple_format(invoice_item.description) %>&nbsp;</div>
+        </div>
+        <div class="span2 offset1">
+          <%= format_quantity(invoice_item.quantity) %> <%= invoice_item.quantity_type.name %>
+        </div>
+        <div class="span1"><%= format_price(invoice_item.price, @invoice.currency_type) %></div>
+        <div class="span2 right-align">
+          <span class="total">
+            <%= format_price(invoice_item.total, @invoice.currency_type) %>
+          </span>
+        </div>
+      </div>
+      <% end %>
+  </div>
+
+  <div id="invoice-total" class="row">
+    <div class="span1 offset9"><h4>Total</h4></div>
+    <div class="span2">
+      <span class="pull-right total"><h4>
+        <%= format_price(@invoice.total, @invoice.currency_type) %> <%= @invoice.currency_type.code%>
+      </h4></span>
+    </div>
+  </div>
+
+  <div id="invoice-note">
+    <div>
+      <p><strong>Notes</strong></p>
+      <p><%= simple_format(@invoice.note) %></p>
+    </div>
+  </div>
+
+</div>

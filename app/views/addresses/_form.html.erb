@@ -1,0 +1,8 @@
+<%= parent_form.simple_fields_for :address do |f| %>
+  <%= f.input :line_one, :label=> 'Address Line 1' %>
+  <%= f.input :line_two, :label=> 'Address Line 2' %>
+  <%= f.input :city %>
+  <%= f.input :state, :label=> 'State/Provence/Region' %>
+  <%= f.input :zipcode, :label=> 'Zip/Postal Code' %>
+  <%= f.input :country %>
+<% end %>

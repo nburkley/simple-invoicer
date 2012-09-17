@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  client_id: 1
+  date: 2012-09-07
+  number: 1
+  currency_type_id: 1
+  note: MyText
+
+two:
+  user_id: 1
+  client_id: 1
+  date: 2012-09-07
+  number: 1
+  currency_type_id: 1
+  note: MyText

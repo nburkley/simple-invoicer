@@ -1,0 +1,3 @@
+== Simple Invoice. 
+
+A basic rails app for creating and maintaining invoices. Uses wicked_pdf to generate PDF views of invoices.
