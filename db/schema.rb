@@ -72,12 +72,12 @@ ActiveRecord::Schema.define(:version => 20120912094445) do
   end
 
   create_table "profiles", :force => true do |t|
-    t.integer  "user_id",      :null => false
+    t.integer  "user_id",                                  :null => false
     t.string   "name"
-    t.string   "company_name"
+    t.string   "company_name", :default => "Company Name"
     t.string   "website"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
   create_table "quantity_types", :force => true do |t|
