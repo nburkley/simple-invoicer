@@ -12,6 +12,7 @@ gem 'devise'
 gem 'wicked_pdf'
 gem "wkhtmltopdf-heroku"
 gem 'nested_form'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -36,7 +37,6 @@ group :test, :development do
   gem 'pry'
   gem 'factory_girl_rails', :require => false
   gem 'quiet_assets'
-  gem 'thin'
 end
 
 # To use ActiveModel has_secure_password
