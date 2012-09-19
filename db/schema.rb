@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120912094445) do
+ActiveRecord::Schema.define(:version => 20120919082117) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "addressable_id"
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(:version => 20120912094445) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "addresses", ["addressable_id"], :name => "index_addresses_on_addressable_id"
+  add_index "addresses", ["addressable_type"], :name => "index_addresses_on_addressable_type"
+
   create_table "clients", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.string   "name"
@@ -33,6 +36,8 @@ ActiveRecord::Schema.define(:version => 20120912094445) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "clients", ["user_id"], :name => "index_clients_on_user_id"
 
   create_table "contacts", :force => true do |t|
     t.integer  "client_id",  :null => false
@@ -42,6 +47,8 @@ ActiveRecord::Schema.define(:version => 20120912094445) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "contacts", ["client_id"], :name => "index_contacts_on_client_id"
 
   create_table "currency_types", :force => true do |t|
     t.string   "symbol"
@@ -60,6 +67,9 @@ ActiveRecord::Schema.define(:version => 20120912094445) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "invoice_items", ["invoice_id"], :name => "index_invoice_items_on_invoice_id"
+  add_index "invoice_items", ["quantity_type_id"], :name => "index_invoice_items_on_quantity_type_id"
+
   create_table "invoices", :force => true do |t|
     t.integer  "user_id",          :null => false
     t.integer  "client_id"
@@ -71,6 +81,10 @@ ActiveRecord::Schema.define(:version => 20120912094445) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "invoices", ["client_id"], :name => "index_invoices_on_client_id"
+  add_index "invoices", ["currency_type_id"], :name => "index_invoices_on_currency_type_id"
+  add_index "invoices", ["user_id"], :name => "index_invoices_on_user_id"
+
   create_table "profiles", :force => true do |t|
     t.integer  "user_id",                                  :null => false
     t.string   "name"
@@ -79,6 +93,8 @@ ActiveRecord::Schema.define(:version => 20120912094445) do
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
   end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "quantity_types", :force => true do |t|
     t.string   "name"

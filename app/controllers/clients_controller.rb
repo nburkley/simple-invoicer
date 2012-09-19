@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :find_client, :only => [:edit, :update, :destroy]
 
   def index
     @clients = current_user.clients
@@ -17,16 +18,14 @@ class ClientsController < ApplicationController
     if @client.save
       redirect_to clients_path, notice: 'Client was successfully created.'
     else
-      render action: "new"
+      render :new
     end
   end
 
   def edit
-    @client = current_user.clients.find(params[:id])
   end
 
   def update
-    @client = current_user.clients.find(params[:id])
     @client.update_attributes(params[:client])
     if @client.save
       redirect_to edit_client_path(@client), notice: "Client updated!"
@@ -36,8 +35,12 @@ class ClientsController < ApplicationController
   end
 
   def destroy
-    @client = current_user.clients.find(params[:id])
     @client.destroy
     redirect_to clients_url
   end
+
+  protected
+    def find_client
+      @client = current_user.clients.find(params[:id])
+    end
 end

@@ -6,7 +6,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :currency_type
   has_many :invoice_items
 
-  accepts_nested_attributes_for :invoice_items, :allow_destroy => true, :reject_if => proc { 
+  accepts_nested_attributes_for :invoice_items, :allow_destroy => true, :reject_if => proc {
     |item| item[:quantity].blank? && item[:description].blank? && item[:price].blank?
       }
 

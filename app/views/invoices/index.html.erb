@@ -18,7 +18,7 @@
       <td><%= link_to format_invoice_number(invoice.number), invoice %></td>
       <td><%= format_date(invoice.date) %></td>
       <td><%= invoice.client.name %></td>
-      <td ><%= format_price(invoice.total, invoice.currency_type) %></td>
+      <td><%= format_price(invoice.total, invoice.currency_type) %></td>
       <td><%= link_to 'Edit', edit_invoice_path(invoice), :class => 'btn btn-mini' %></td>
       <td><%= link_to 'Delete', invoice_path(invoice), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
     </tr>

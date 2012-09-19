@@ -1,5 +1,6 @@
 class InvoicesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :find_invoice, :only => [:edit, :update, :destroy]
 
   def index
     @invoices = current_user.invoices
@@ -35,11 +36,9 @@ class InvoicesController < ApplicationController
   end
 
   def edit
-    @invoice = current_user.invoices.find(params[:id])
   end
 
   def update
-    @invoice = current_user.invoices.find(params[:id])
     @invoice.update_attributes(params[:invoice])
     if @invoice.save
       redirect_to @invoice, notice: "Invoice was successfully updated."
@@ -49,9 +48,13 @@ class InvoicesController < ApplicationController
   end
 
   def destroy
-    @invoice = current_user.invoices.find(params[:id])
     @invoice.destroy
 
     redirect_to invoices_url
   end
+
+  protected
+    def find_invoice
+      @invoice = current_user.invoices.find(params[:id])
+    end
 end

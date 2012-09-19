@@ -8,7 +8,7 @@ class Client < ActiveRecord::Base
   has_one :address, :as => :addressable, :dependent => :destroy
 
   accepts_nested_attributes_for :address
-  accepts_nested_attributes_for :contacts, :allow_destroy => true, :reject_if => proc { 
+  accepts_nested_attributes_for :contacts, :allow_destroy => true, :reject_if => proc {
     |contact| contact[:name].blank? && contact[:email].blank? && contact[:phone].blank?
   }
 

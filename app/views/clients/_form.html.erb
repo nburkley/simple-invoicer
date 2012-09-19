@@ -6,11 +6,11 @@
     <%= f.input :name %>
     <%= render 'addresses/form', :parent_form=>f %>
     <%= f.input :website %>
-   
+
     <div id="contacts" style="float:left">
     <%= f.simple_fields_for :contacts do |contact_form| %>
     <div class="contact-entry" style="margin-bottom:20px">
-      
+
       <% if contact_form.object.errors %>
         <div class="row" style="color:#B94A48;">
           <div class="span4 offset2">
@@ -34,7 +34,7 @@
       <div class="control-group pull-left<% if contact_form.object.errors.has_key?(:phone) %> error<% end %>">
         <%= contact_form.input_field :phone, :label=>false, :placeholder=>"Phone" %>
       </div>
-      
+
       <%= contact_form.link_to_remove  'remove', :class=>'btn  btn-mini pull-right' %>
     </div>
    <% end %>

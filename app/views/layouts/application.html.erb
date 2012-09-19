@@ -32,7 +32,7 @@
               <li><%= link_to "Profile", profile_path %></li>
               <%= yield :navbar_actions %>
             </ul>
-            <p class="navbar-text pull-right">Logged in as <strong><%= current_user.email %></strong> | 
+            <p class="navbar-text pull-right">Logged in as <strong><%= current_user.email %></strong> |
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class=>'navbar-link' %>
             </p>
           <% else %>
