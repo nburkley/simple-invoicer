@@ -60,12 +60,8 @@ div#invoice-edit, div#invoice-new {
 }
 
 
-div#invoice-show {
 
-    @media print {
-        zoom:0.7;
-        font-size:15px;
-    }
+div#invoice-show {
 
     #invoice-details, #invoice-total {
         .description {
@@ -73,7 +69,7 @@ div#invoice-show {
         }
 
         .total {
-            padding-right:10px;
+            padding-right:20px;
         }
     }
 
@@ -84,7 +80,7 @@ div#invoice-show {
     div.item-header {
 
         min-height: 20px;
-        padding: 5px 10px 5px 0px;
+        padding: 5px 0px 5px 0px;
         background-color: #737373;
         background-image: -moz-linear-gradient(top, $light-grey, $dark-grey);
         background-image: -webkit-gradient(linear, 0 0, 0 100%, from($light-grey), to($dark-grey));
@@ -107,6 +103,7 @@ div#invoice-show {
         border-bottom: $standard-border;
         padding: 12px 0 5px 0;
         float:left;
+        width:100%;
 
     }
 
@@ -115,6 +112,7 @@ div#invoice-show {
         border-bottom: $standard-border;
         border-top: $standard-border;
         padding: 20px;
+        margin-bottom:20px;
     }
 
 }

@@ -69,7 +69,7 @@
           <%= format_quantity(invoice_item.quantity) %> <%= invoice_item.quantity_type.name %>
         </div>
         <div class="span1"><%= format_price(invoice_item.price, @invoice.currency_type) %></div>
-        <div class="span2 right-align">
+        <div class="span2 right-align pull-right">
           <span class="total">
             <%= format_price(invoice_item.total, @invoice.currency_type) %>
           </span>
@@ -80,7 +80,7 @@
 
   <div id="invoice-total" class="row">
     <div class="span1 offset9"><h4>Total</h4></div>
-    <div class="span2">
+    <div class="span2 pull-right">
       <span class="pull-right total"><h4>
         <%= format_price(@invoice.total, @invoice.currency_type) %> <%= @invoice.currency_type.code%>
       </h4></span>

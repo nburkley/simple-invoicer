@@ -10,7 +10,6 @@ gem 'simple_form'
 gem 'country_select'
 gem 'devise'
 gem 'wicked_pdf'
-gem "wkhtmltopdf-heroku"
 gem 'nested_form'
 gem 'thin'
 
@@ -37,6 +36,11 @@ group :test, :development do
   gem 'pry'
   gem 'factory_girl_rails', :require => false
   gem 'quiet_assets'
+  gem 'wkhtmltopdf'
+end
+
+group :production do
+  gem 'wkhtmltopdf-heroku'
 end
 
 # To use ActiveModel has_secure_password
