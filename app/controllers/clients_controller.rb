@@ -35,8 +35,12 @@ class ClientsController < ApplicationController
   end
 
   def destroy
-    @client.destroy
-    redirect_to clients_url
+    if @client.destroy
+      redirect_to clients_url, notice: 'Client has been deleted'
+    else
+      flash.alert = @client.errors.full_messages.first
+      redirect_to clients_url
+    end
   end
 
   protected

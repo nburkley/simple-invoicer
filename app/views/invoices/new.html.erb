@@ -1,5 +1,14 @@
 <h1>New invoice</h1>
 
+<% unless current_user.has_clients_setup? %>
+<div class="alert alert-block alert fade in" id="no-client-warning">
+  <h4 class="alert-heading">You don't have any clients setup.</h4>
+  <p>You'll need to setup a client record before you can create an invoice</p>
+  <p>
+    <%= link_to "Create a Client", new_client_path, :class=>"btn btn-primary" %>
+  </p>
+</div>
+<% end %>
 <div id="invoice-new">
   <%= render 'form' %>
 </div>

@@ -10,13 +10,16 @@ class User < ActiveRecord::Base
 
   after_create :create_profile
 
-  private
-
-  def create_profile
-    p = Profile.new
-    p.user = self
-    p.build_address
-    p.save!
+  def has_clients_setup?
+    clients.length >0
   end
+
+  private
+    def create_profile
+      p = Profile.new
+      p.user = self
+      p.build_address
+      p.save!
+    end
 
 end
