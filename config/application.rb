@@ -60,5 +60,8 @@ module SimpleInvoicer
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # ensure invoices.js is precompiled
+    config.assets.precompile += %w(invoices.js)
   end
 end
