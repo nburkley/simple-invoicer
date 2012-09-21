@@ -1,9 +1,11 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 jQuery ->
+  #set up datepicker
   $('#invoice_date').datepicker
     dateFormat: 'yy-mm-dd'
 
+  #set up form to dynamically update totals
   $(".invoice-item").each ->
     lineItem = $(this)
     lineItem.find(".quantity").change ->
@@ -11,6 +13,9 @@ jQuery ->
     lineItem.find(".price").change ->
       updateLineTotal(lineItem)
     updateLineTotal(lineItem)
+
+  #disable form if no clients exist
+  $("input[type=submit]").attr("disabled", "disabled") if $("#no-client-warning").length
 
 changeGrandTotal = (amount) ->
   total = parseFloat($('#invoice-total').html())
@@ -36,3 +41,8 @@ $(document).on "nested:fieldAdded", (event) ->
     updateLineTotal(lineItem)
   lineItem.find(".price").change ->
     updateLineTotal(lineItem)
+
+$(document).on "nested:fieldRemoved:invoice_items", (event) ->
+  lineItem = event.field
+  removedTotal = parseFloat(lineItem.find(".line-total").html())
+  changeGrandTotal(-removedTotal) if !isNaN(removedTotal)
