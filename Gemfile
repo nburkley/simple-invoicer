@@ -33,10 +33,18 @@ gem 'jquery-ui-rails'
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'cucumber'
+  gem 'cucumber-rails', :require => false
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
+  gem 'database_cleaner'
   gem 'pry'
   gem 'factory_girl_rails', :require => false
   gem 'quiet_assets'
   gem 'wkhtmltopdf'
+  gem 'email_spec'
+  gem 'shoulda-matchers', :require => false
 end
 
 group :production do
