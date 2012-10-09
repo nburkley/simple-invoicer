@@ -37,8 +37,11 @@ Given /^I am signed up$/ do
   user = current_user
 end
 
-When /^I sign in$/ do
-  pending # express the regexp above with the code you wish you had
+Given /^I am logged in$/ do
+  visit '/'
+  fill_in "user_email", :with => @current_user.email
+  fill_in "user_password", :with => @current_user.password
+  click_button "Sign in"
 end
 
 module UserHelpers
@@ -48,8 +51,7 @@ module UserHelpers
 
   def current_user
     if !@current_user
-      @current_user = FactoryGirl.create(:user, :password => 'password')
-      FactoryGirl.create(:goal, :user => @current_user)
+      @current_user = FactoryGirl.create(:user)
     end
     @current_user.reload
   end

@@ -13,5 +13,5 @@ Scenario: New User
 
 Scenario: Existing User
   Given I am signed up
-  When I sign in
+  And I am logged in
   Then I should be logged in
