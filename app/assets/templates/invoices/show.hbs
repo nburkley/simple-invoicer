@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="span4"><h1>{{user.profile.company_name}}</h1></div>
+  <div class="span2 offset4 right-align" ><h3>Invoice</h3></div>
+  <div class="span2"><h3>{{formattedNumber}}</h3></div>
+</div>
+<div class="row">
+  <div class="span2 offset8 right-align"><strong>Date of Invoice</strong></div>
+  <div class="span2">{{formatDate date}}</div>
+</div>
+<div class="row">
+  <div class="span2 offset8 right-align"><strong>Payment is Due</strong></div>
+  <div class="span2">{{due_date}}</div>
+</div>
+
+<div id="address-info" class="row no-margin-left" >
+    <div class="span4">
+      <p><h4>To</h4></p>
+      <p><strong>{{client.name}}</strong></p>
+      <p>{{client.address.line_one}}</p>
+      <p>{{client.address.line_two}}</p>
+      <p>{{client.address.citiy}}</p>
+      <p>{{client.address.state}} {{client.address.zipcode}}</p>
+      <p>{{client.address.country}}</p>
+    </div>
+    <div class="span4">
+      <p><h4>From</h4></p>
+      <p><strong>{{user.profile.company_name}}</strong></p>
+      <p>{{user.profile.address.line_one}}</p>
+      <p>{{user.profile.address.line_two}}</p>
+      <p>{{user.profile.address.city}}</p>
+      <p>{{user.profile.address.state}} {{current_user.prrofile.address.zipcode}}</p>
+      <p>{{user.profile.address.country}}</p>
+    </div>
+</div>
+
+<div id="invoice-details">
+  <div class="item-header">
+    <div class="span6 no-margin-left"><span class="description"><strong>Description</strong></span></div>
+    <div class="span2 offset1"><strong>Quantity</strong></div>
+    <div class="span1"><strong>Price</strong></div>
+    <div class="span1 pull-right right-align"><span class="total"><strong>Total</strong></span></div>
+  </div>
+
+  {{#each invoice_items}}
+   
+  <div class="invoice-item">
+    <div class="span6 no-margin-left">
+      <div class="description">{{invoice_item.description}}&nbsp;</div>
+    </div>
+    <div class="span2 offset1">
+      {{invoice_item.quantity}} {{invoice_item.quantity_type.name}}
+    </div>
+    <div class="span1">{{formatPrice invoice_item.price ../currency_type.symbol}}</div>
+    <div class="span2 right-align pull-right">
+      <span class="total">
+        {{formatPrice invoice_item.total ../currency_type.symbol}}
+      </span>
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+<div id="invoice-total" class="row">
+  <div class="span1 offset9"><h4>Total</h4></div>
+  <div class="span2 pull-right">
+    <span class="pull-right total"><h4>
+      {{formatPrice total currency_type.symbol}}{{currency_type.code}}
+    </h4></span>
+  </div>
+</div>
+
+<div id="invoice-note">
+  <div>
+    <p><strong>Notes</strong></p>
+    <p>{{note}}</p>
+  </div>
+</div>

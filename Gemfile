@@ -12,6 +12,7 @@ gem 'devise'
 gem 'wicked_pdf'
 gem 'nested_form'
 gem 'thin'
+gem 'rabl'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -23,9 +24,11 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-
   gem 'bootstrap-sass', '~> 2.1.0.0'
+  gem 'handlebars_assets'
 end
+gem 'backbone-on-rails'
+gem 'backbone-support'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -45,6 +48,7 @@ group :test, :development do
   gem 'wkhtmltopdf'
   gem 'email_spec'
   gem 'shoulda-matchers', :require => false
+  gem 'jasmine', :git => 'https://github.com/pivotal/jasmine-gem.git', :ref => "34c1529c3f7"
 end
 
 group :production do

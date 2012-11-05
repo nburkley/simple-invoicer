@@ -12,6 +12,10 @@ SimpleInvoicer::Application.routes.draw do
 
   resource :home
 
+  namespace :api do
+    resources :invoices
+  end
+
   match "profile" => "Profiles#edit"
 
   root :to => "home#index"

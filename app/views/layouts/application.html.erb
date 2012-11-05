@@ -21,7 +21,7 @@
           <span class="icon-bar"></span>
         </a>
         <% if user_signed_in? %>
-          <%= link_to "Simple Invoicer",  invoices_path, :class=>:brand %>
+          <%= link_to "Simple Invoicer",  root_path, :class=>:brand %>
         <% else %>
           <%= link_to "Simple Invoicer",  root_path, :class=>:brand %>
         <% end %>
@@ -61,5 +61,6 @@
       <div><%= yield %></div>
   </div>
 
+  <%= yield :javascript %>
 </body>
 </html>

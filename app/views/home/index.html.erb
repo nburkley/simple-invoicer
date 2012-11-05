@@ -1,9 +1,22 @@
-<div class="row">
-  <div class="span10 offset1">
-    <h2>Welcome to Simple Invoicer!</h2>
-    <h5>An application to generate and keep record of your invoices.</h5>
-    <div class="well">
-      Not already a member? <%= link_to 'Sign Up', new_user_registration_path %> now.
-    </div>
-  </div>
+<div id="simple-invoicer">
 </div>
+
+<script type="text/json" id="bootstrap">
+  {
+    "invoices": <%= render(template: "api/invoices/index.json.rabl") %>,
+    "currentUser": <%= render(template: "api/users/show.json.rabl") %>
+  }
+</script>
+
+<%= content_for :javascript do -%>
+  <script type="text/javascript">
+
+    $(function () {
+      var div = $('<div></div>');
+      div.html($('#bootstrap').text());
+      var data = JSON.parse(div.text());
+
+      SimpleInvoicer.initialize(data);
+    });
+  </script>
+<% end %>

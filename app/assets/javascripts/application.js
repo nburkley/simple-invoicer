@@ -14,4 +14,18 @@
 //= require jquery_ujs
 //= require jquery.ui.datepicker
 //= require jquery_nested_form
+//= require date
 //= require bootstrap
+//= require underscore
+//= require backbone
+//= require backbone-support
+//= require handlebars.runtime
+//
+//= require .//simple_invoicer
+//
+//= require_tree .//lib
+//= require_tree ../templates/
+//= require_tree .//models
+//= require_tree .//collections
+//= require_tree .//views
+//= require_tree .//routers
