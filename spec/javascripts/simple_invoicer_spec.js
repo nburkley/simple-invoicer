@@ -18,8 +18,8 @@ describe("SimpleInvoicer", function() {
   describe("initialize()", function() {
     it("accepts data JSON and instantiates a collection from it", function() {
       var data = {
-        "invoices": [{"number":"1"}, {"number":"2"}],
-        "users": [{"id":"1", "email": "example@example.com"}]
+        "invoices": [{"number":"1", "date":"2012-09-24", "total":"249.0"}, {"number":"2", "date":"2012-12-25", "total":"100.0"}, ],
+        "currentUser": [{"id":"1", "email": "example@example.com"}]
       };
       SimpleInvoicer.initialize(data);
 
@@ -27,12 +27,11 @@ describe("SimpleInvoicer", function() {
       expect(SimpleInvoicer.invoices.length).not.toEqual(undefined);
       expect(SimpleInvoicer.invoices.models[0].get('number')).toEqual("1");
       expect(SimpleInvoicer.invoices.models[1].get('number')).toEqual("2");
-
-      expect(SimpleInvoicer.users.length).toEqual(1);
+      expect(SimpleInvoicer.currentUser).not.toEqual(undefined);
     });
 
-    it("instantiates an Invoices router", function() {
-      sinon.spy(SimpleInvoicer.Router);
+    it("instantiates a router", function() {
+      sinon.spy(SimpleInvoicer, 'Router');
       SimpleInvoicer.initialize({});
       expect(SimpleInvoicer.Router).toHaveBeenCalled();
       SimpleInvoicer.Router.restore();

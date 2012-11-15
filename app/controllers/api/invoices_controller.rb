@@ -2,7 +2,8 @@ class Api::InvoicesController < ApplicationController
   respond_to :json
 
   def index
-    respond_with current_user.invoices
+    @invoices = current_user.invoices
+    respond_with @invoices
   end
 
   def show

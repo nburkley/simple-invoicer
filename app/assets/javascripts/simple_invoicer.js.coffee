@@ -4,8 +4,9 @@ window.SimpleInvoicer =
   Views: {}
   Routers: {}
   initialize: (data) ->
+    this.currentUser = new SimpleInvoicer.Models.User(data.currentUser)
     this.invoices = new SimpleInvoicer.Collections.Invoices(data.invoices)
-    this.currentUser = new SimpleInvoicer.Collections.Users(data.currentUser)
+    this.currencyTypes = new SimpleInvoicer.Collections.CurrencyTypes(data.currencyTypes)
 
     new SimpleInvoicer.Router({collection: this.invoices, currentUser: this.currentUser })
     if !Backbone.history.started

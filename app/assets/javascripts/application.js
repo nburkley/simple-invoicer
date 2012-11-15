@@ -19,6 +19,7 @@
 //= require underscore
 //= require backbone
 //= require backbone-support
+//= require backbone-forms
 //= require handlebars.runtime
 //
 //= require .//simple_invoicer

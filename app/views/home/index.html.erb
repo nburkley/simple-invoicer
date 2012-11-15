@@ -4,7 +4,8 @@
 <script type="text/json" id="bootstrap">
   {
     "invoices": <%= render(template: "api/invoices/index.json.rabl") %>,
-    "currentUser": <%= render(template: "api/users/show.json.rabl") %>
+    "currentUser": <%= render(template: "api/current_users/show.json.rabl") %>,
+    "currencyTypes": <%= render(template: "api/currency_types/index.json.rabl") %>
   }
 </script>
 

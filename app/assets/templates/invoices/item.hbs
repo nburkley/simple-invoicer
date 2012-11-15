@@ -1,6 +1,6 @@
   <td><a href="#invoices/{{id}}">{{formattedNumber}}</td>
-  <td>{{formattedDate}}</td>
+  <td>{{formatDate date}}</td>
   <td>{{client.name}}</td>
-  <td>{{formattedTotal}}</td>
+  <td>{{formatPrice total currency_type.symbol}}</td>
   <td><a href="/invoices/{{id}}/edit" class="btn btn-mini">Edit</a></td>
   <td><a href="#" class="btn btn-mini btn-danger delete-link" data-confirm="Are you sure?" rel="nofollow">Delete</a></td>

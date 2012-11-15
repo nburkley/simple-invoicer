@@ -1,0 +1,1 @@
+SimpleInvoicer.Models.CurrencyType = Backbone.Model.extend ->
