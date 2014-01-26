@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Address do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before { @address = FactoryGirl.build(:address) }
+
+  subject { @address }
+
+  it { should be_valid }
+
 end

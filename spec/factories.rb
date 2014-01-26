@@ -35,14 +35,23 @@ FactoryGirl.define do
     description 'test'
     price 10
     invoice
-    note 'some text'
   end
 
   factory :invoice do
     number Invoice.maximum(:number) || 1
     client
+    user
     currency_type
     date Date.today
+    note 'some text'
+  end
+
+  factory :contact do
+    client
+  end
+
+  factory :profile do
+    user
   end
 
 end
